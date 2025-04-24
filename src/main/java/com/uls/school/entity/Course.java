@@ -6,19 +6,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @Data
-@ToString(exclude = "author")
+@ToString(exclude = "students")
 @NoArgsConstructor
-public class Book {
+public class Course {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 
-	@ManyToOne
+	@ManyToMany(mappedBy = "courses")
 	@JsonBackReference
-	private Author author;
+	private List<Student> students;
 
 }
