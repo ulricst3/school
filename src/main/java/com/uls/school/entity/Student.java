@@ -1,5 +1,6 @@
 package com.uls.school.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -28,5 +29,6 @@ public class Student {
 			inverseJoinColumns = @JoinColumn(name = "course_id")
 	)
 	@JsonManagedReference
+	@JsonIgnore
 	private List<Course> courses = new ArrayList<>();
 }
